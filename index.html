@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ente Sontham Maachun 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{background:#0f0c29;color:white;overflow:hidden}
+
+/* pages */
+.page{
+position:fixed;
+inset:0;
+display:none;
+padding:30px 20px;
+overflow-y:auto;
+animation:fade .9s ease;
+}
+.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:scale(.97)}to{opacity:1}}
+
+.nextBtn{
+margin-top:30px;
+padding:14px 28px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#ff6ec4,#7873f5);
+color:#fff;
+font-size:16px;
+cursor:pointer;
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+.title{
+font-family:'Great Vibes',cursive;
+font-size:4rem;
+margin-top:20px;
+}
+
+/* FLOATING HEARTS */
+.ambient-heart{
+position:fixed;
+bottom:-20px;
+font-size:18px;
+opacity:.6;
+animation:floatUp linear forwards;
+pointer-events:none;
+}
+@keyframes floatUp{
+to{transform:translateY(-110vh);opacity:0}
+}
+
+/* ===================== */
+/* PAGE 1 — REAL TWITTER */
+/* ===================== */
+
+#page1{
+background:#000;
+color:#e7e9ea;
+text-align:center;
+}
+
+.twitter-card{
+background:#16181c;
+border:1px solid #2f3336;
+border-radius:16px;
+max-width:500px;
+margin:14px auto;
+padding:14px;
+text-align:left;
+transition:.25s;
+}
+.twitter-card:hover{
+background:#1d1f23;
+}
+
+.tw-header{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:6px;
+}
+
+.tw-avatar{
+width:42px;
+height:42px;
+border-radius:50%;
+background:linear-gradient(45deg,#ff6ec4,#7873f5);
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+}
+
+.tw-name{
+font-weight:700;
+}
+
+.tw-handle{
+color:#71767b;
+font-size:14px;
+}
+
+.tw-text{
+margin-top:6px;
+line-height:1.5;
+}
+
+/* ===================== */
+/* PAGE 2 LETTER */
+/* ===================== */
+
+#page2{
+background:#1a120b;
+text-align:center;
+padding-top:60px;
+}
+
+.letter{
+background:#f5e6c8;
+color:#3b2a1a;
+padding:32px;
+border-radius:14px;
+max-width:560px;
+margin:auto;
+font-family:'Playfair Display',serif;
+line-height:1.9;
+box-shadow:
+0 0 60px rgba(0,0,0,.7),
+inset 0 0 40px rgba(120,70,20,.25);
+position:relative;
+}
+
+/* burned edges */
+.letter:before{
+content:"";
+position:absolute;
+inset:-8px;
+background:
+radial-gradient(circle at 10% 10%,rgba(0,0,0,.4),transparent 40%),
+radial-gradient(circle at 90% 90%,rgba(0,0,0,.4),transparent 40%);
+border-radius:16px;
+pointer-events:none;
+}
+
+/* ===================== */
+/* PAGE 3 PROPOSAL */
+/* ===================== */
+
+#page3{
+background:linear-gradient(to bottom,#000428,#004e92);
+text-align:center;
+}
+
+.ring{
+font-size:90px;
+cursor:pointer;
+margin-top:40px;
+transition:.5s;
+filter:drop-shadow(0 0 12px rgba(255,255,255,.6));
+}
+
+.proposalBtns{
+margin-top:30px;
+height:120px;
+position:relative;
+display:none;
+}
+
+.noBtn{
+position:absolute;
+left:60%;
+top:40%;
+}
+
+/* ===================== */
+/* PAGE 4 */
+/* ===================== */
+
+#page4{
+background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
+color:#222;
+text-align:center;
+}
+
+.flowers{
+font-size:70px;
+margin-top:20px;
+animation:float 3s infinite ease-in-out;
+}
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-15px)}
+}
+
+/* slideshow */
+.slideshow{
+position:relative;
+height:240px;
+border-radius:18px;
+overflow:hidden;
+margin-top:20px;
+box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+.slide{
+position:absolute;
+inset:0;
+opacity:0;
+transition:opacity 1.4s;
+}
+.slide.active{opacity:1}
+.slide img{width:100%;height:100%;object-fit:cover}
+
+@media(max-width:600px){
+.title{font-size:2.6rem}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+<source src="lover.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ================= PAGE 1 ================= -->
+
+<div id="page1" class="page active">
+<h1 class="title">Happy 21st Birthday Maachu 🎂💖</h1>
+
+<div class="twitter-card">
+<div class="tw-header">
+<div class="tw-avatar">Z</div>
+<div>
+<div class="tw-name">Zendaya</div>
+<div class="tw-handle">@Zendaya</div>
+</div>
+</div>
+<div class="tw-text">Happy Birthday queen! Stay magical 💖✨</div>
+</div>
+
+<div class="twitter-card">
+<div class="tw-header">
+<div class="tw-avatar">T</div>
+<div>
+<div class="tw-name">Tom Holland</div>
+<div class="tw-handle">@TomHolland</div>
+</div>
+</div>
+<div class="tw-text">Hope your day is full of love and surprises! 🎉</div>
+</div>
+
+<div class="twitter-card">
+<div class="tw-header">
+<div class="tw-avatar">H</div>
+<div>
+<div class="tw-name">Harry Styles</div>
+<div class="tw-handle">@Harry_Styles</div>
+</div>
+</div>
+<div class="tw-text">Treat people with kindness — especially today 💐</div>
+</div>
+
+<div class="twitter-card">
+<div class="tw-header">
+<div class="tw-avatar">L</div>
+<div>
+<div class="tw-name">Lana Del Rey</div>
+<div class="tw-handle">@LanaDelRey</div>
+</div>
+</div>
+<div class="tw-text">Born to be iconic. Happy Birthday 💫</div>
+</div>
+
+<div class="twitter-card">
+<div class="tw-header">
+<div class="tw-avatar">F</div>
+<div>
+<div class="tw-name">Frank Ocean</div>
+<div class="tw-handle">@FrankOcean</div>
+</div>
+</div>
+<div class="tw-text">Nights like this are meant to be remembered.</div>
+</div>
+
+<div class="twitter-card">
+<div class="tw-header">
+<div class="tw-avatar">A</div>
+<div>
+<div class="tw-name">Arijit Singh</div>
+<div class="tw-handle">@ArijitSingh</div>
+</div>
+</div>
+<div class="tw-text">May your life always have beautiful melodies 🎶</div>
+</div>
+
+<div class="twitter-card">
+<div class="tw-header">
+<div class="tw-avatar">S</div>
+<div>
+<div class="tw-name">SZA</div>
+<div class="tw-handle">@sza</div>
+</div>
+</div>
+<div class="tw-text">Soft, loved, and glowing. Happy Birthday 💕</div>
+</div>
+
+<button class="nextBtn" onclick="goPage(2)">Continue ➜</button>
+</div>
+
+<!-- ================= PAGE 2 ================= -->
+
+<div id="page2" class="page">
+<div class="letter" id="typedLetter"></div>
+<button class="nextBtn" onclick="goPage(3)">My Heart ➜</button>
+</div>
+
+<!-- ================= PAGE 3 ================= -->
+
+<div id="page3" class="page">
+<h1 style="font-family:Great Vibes;font-size:3rem;margin-top:30px;">
+Maachu… ninak enne ishttano ? 💍
+</h1>
+
+<div class="ring" onclick="openProposal()">💍</div>
+
+<div class="proposalBtns" id="proposalBtns">
+<button class="nextBtn" onclick="sayYes()">YES 💖</button>
+<button class="nextBtn noBtn" id="noBtn">NO 😳</button>
+</div>
+
+<button class="nextBtn" id="finalBtn" style="display:none" onclick="goPage(4)">
+Our Future ➜
+</button>
+</div>
+
+<!-- ================= PAGE 4 ================= -->
+
+<div id="page4" class="page">
+<h1 class="title">I Love You kore kore ❤️</h1>
+
+<p style="max-width:600px;margin:20px auto;font-size:18px;">
+"You have bewitched me, body and soul."<br>
+"I'm also just a girl, standing in front of a boy…" <br>
+"To me, you are perfect."
+</p>
+
+<div class="flowers">💐🌸🌷🌹</div>
+<h2 style="margin-top:20px;">A digital lily bouquet for you 🤍</h2>
+
+<div class="slideshow">
+<div class="slide active"><img src="photo1.jpg"></div>
+<div class="slide"><img src="photo2.jpg"></div>
+<div class="slide"><img src="photo3.jpg"></div>
+<div class="slide"><img src="photo4.jpg"></div>
+<div class="slide"><img src="photo5.jpg"></div>
+<div class="slide"><img src="photo6.jpg"></div>
+<div class="slide"><img src="photo7.jpg"></div>
+<div class="slide"><img src="photo8.jpg"></div>
+<div class="slide"><img src="photo9.jpg"></div>
+<div class="slide"><img src="photo10.jpg"></div>
+<div class="slide"><img src="photo11.jpg"></div>
+<div class="slide"><img src="photo12.jpg"></div>
+<div class="slide"><img src="photo13.jpg"></div>
+<div class="slide"><img src="photo14.jpg"></div>
+<div class="slide"><img src="photo15.jpg"></div>
+<div class="slide"><img src="photo16.jpg"></div>
+<div class="slide"><img src="photo17.jpg"></div>
+<div class="slide"><img src="photo18.jpg"></div>
+<div class="slide"><img src="photo19.jpg"></div>
+<div class="slide"><img src="photo20.jpg"></div>
+</div>
+</div>
+
+<script>
+const music=document.getElementById("bgMusic");
+
+function goPage(n){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById("page"+n).classList.add("active");
+
+if(n===2){
+startMusic();
+startLetter();
+}
+}
+
+/* MUSIC — USER INTERACTION SAFE */
+function startMusic(){
+music.volume=0.4;
+music.play().catch(()=>{});
+}
+
+/* LETTER */
+const text=`Hey Maachu…
+
+I still remember the first time we met.
+That night when you came into my life — that moments I’ll treasure it forever.
+
+I may not be your first, but I truly wish to be your last.
+
+The way you wished me on my birthday… no one ever did that.
+So today, I wanted to do the same for you. eventho im late i want to wish you again 
+
+Because I love you my heer and you are my vaava and sweeetiee kyootiee lil maachu
+
+I still think about you all the time i dont believe in god nor i goto temples but for you i will pray i will goto temples, mosques and churches for you my love.
+
+You are my 11:11 — you will always be. <3`;
+
+let ti=0;
+function startLetter(){
+const el=document.getElementById("typedLetter");
+el.innerHTML="";
+ti=0;
+function type(){
+if(ti<text.length){
+el.innerHTML+=text.charAt(ti);
+ti++;
+setTimeout(type,32);
+}}
+type();
+}
+
+/* PROPOSAL */
+function openProposal(){
+document.getElementById("proposalBtns").style.display="block";
+}
+
+function sayYes(){
+confetti({particleCount:320,spread:180});
+setTimeout(()=>confetti({particleCount:220,spread:140}),400);
+document.getElementById("finalBtn").style.display="inline-block";
+}
+
+/* moving no */
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseenter",()=>{
+const c=document.getElementById("proposalBtns");
+const maxX=c.clientWidth-noBtn.offsetWidth;
+const maxY=c.clientHeight-noBtn.offsetHeight;
+noBtn.style.left=Math.random()*maxX+"px";
+noBtn.style.top=Math.random()*maxY+"px";
+});
+
+/* slideshow */
+let slides=document.querySelectorAll(".slide");
+let index=0;
+setInterval(()=>{
+slides[index].classList.remove("active");
+index=(index+1)%slides.length;
+slides[index].classList.add("active");
+},2400);
+
+/* floating hearts */
+setInterval(()=>{
+const h=document.createElement("div");
+h.className="ambient-heart";
+h.innerHTML="💖";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=(6+Math.random()*4)+"s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),10000);
+},900);
+</script>
+
+</body>
+</html>
